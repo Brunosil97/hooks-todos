@@ -18,7 +18,7 @@ export default function Todolist() {
                         onDoubleClick={() => dispatch({type: "TOGGLE_TODO", payload: todo})}
                         className={`cursor-pointer flex-1 ml-12 ${todo.complete && "line-through text-grey-darkest"}`}
                         >{todo.text}</span>
-                        <button>
+                        <button onClick={() => dispatch({type: "SET_CURRENT_TODO", payload: todo})}>
                             <img src="https://icon.now.sh/edit/0050c5" alt="Edit Icon"
                             className="h-6"/>
                         </button>
