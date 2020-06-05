@@ -11,18 +11,13 @@ export default function Reducer(state, action) {
             }
     
         case "ADD_TODO":
-            if(!action.payload) {
-                return state 
-            }
-            if (state.todos.findIndex(t => t.text === action.payload) > -1) {
-                return state 
-            }
-            const newTodo = {
-                id: uuid(),
-                text: action.payload,
-                complete: false
-            };
-            const added_todo = [...state.todos, newTodo];
+            // if(!action.payload) {
+            //     return state 
+            // }
+            // if (state.todos.findIndex(t => t.text === action.payload) > -1) {
+            //     return state 
+            // }
+            const added_todo = [...state.todos, action.payload];
             return {
                 ...state,
                 todos: added_todo
@@ -35,13 +30,13 @@ export default function Reducer(state, action) {
             }
 
         case "UPDATE_TODO":
-            if(!action.payload) {
-                return state
-            }
-            if (state.todos.findIndex(t => t.text === action.payload) > -1) {
-                return state 
-            }
-            const updatedTodo = {...state.currentTodo, text: action.payload}
+            // if(!action.payload) {
+            //     return state
+            // }
+            // if (state.todos.findIndex(t => t.text === action.payload) > -1) {
+            //     return state 
+            // }
+            const updatedTodo = {...action.payload}
             const updatedIndex = state.todos.findIndex(t => t.id === state.currentTodo.id)
             const updatedTodos = [
                 ...state.todos.slice(0, updatedIndex),
@@ -56,10 +51,9 @@ export default function Reducer(state, action) {
             }
         
         case "TOGGLE_TODO":
-           const toggle_todos = state.todos.map(t => {
-               return t.id === action.payload.id ? 
-                {...action.payload, complete: !action.payload.complete}
-                 : t }
+           const toggle_todos = state.todos.map(t => 
+               t.id === action.payload.id ? 
+                action.payload : t 
             )
             return {
                 ...state,
