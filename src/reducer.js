@@ -3,6 +3,12 @@ const { uuid } = require('uuidv4');
 
 export default function Reducer(state, action) {
     switch (action.type) {
+
+        case "GET_TODOS":
+            return {
+                ...state,
+                todos: action.payload
+            }
     
         case "ADD_TODO":
             if(!action.payload) {
