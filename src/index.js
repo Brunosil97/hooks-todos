@@ -6,6 +6,7 @@ import todosContext from "./context"
 import todosReducer from "./reducer"
 import todoContext from './context';
 import TodoList from "./components/todoList"
+import TodoForm from "./components/todoForm"
 
 // export const userContext = React.createContext()
 // const username = "Bruno"
@@ -16,6 +17,7 @@ const App = () => {
 
   return (
     <todoContext.Provider value={{state, dispatch}}>
+      <TodoForm/>
       <TodoList/>
     </todoContext.Provider>
   )
